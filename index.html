@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- Portfolio of Art Lenard B. Bradecina. Files: index.html, style.css, script.js, profile.jpg -->
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Art Lenard B. Bradecina | Embedded Systems Developer</title>
+  <meta name="description" content="Computer Engineering student and embedded systems developer building IoT and assistive hardware.">
+  <!-- Favicon: the <A/> monogram as an inline SVG -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0c10'/%3E%3Ctext x='32' y='41' font-family='monospace' font-size='24' font-weight='bold' fill='%2338bdf8' text-anchor='middle'%3E%26lt;A/%26gt;%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Animated particle network (drawn in script.js) -->
+  <canvas id="bg" aria-hidden="true"></canvas>
+
+  <!-- ========== NAVBAR ========== -->
+  <header class="nav">
+    <a href="#home" class="brand mono">&lt;A/&gt;</a>
+    <nav id="menu" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="tools">
+      <button class="btn sm mono" id="cliBtn">&gt;_ CLI</button>
+      <button class="btn sm" id="themeBtn" aria-label="Toggle light or dark theme">◐</button>
+      <button class="btn sm" id="cvBtn">Resume</button>
+      <button class="btn sm burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== HERO ========== -->
+    <section id="home" class="hero">
+      <div class="avatar" role="img" aria-label="Portrait of Art Lenard"></div>
+      <p class="mono tagline">Teresa, Rizal, Philippines</p>
+      <h1>Art Lenard B. Bradecina</h1>
+      <p class="mono role">Computer Engineering Student &amp; Embedded Systems Developer</p>
+      <p class="lead">Architecting smart IoT solutions, embedded hardware prototypes, and sustainable hardware-software integrations.</p>
+      <div class="row">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+      <div class="row socials mono">
+        <a href="https://github.com/artlenardbradecina" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.facebook.com/artlenard.bradecina.3/" target="_blank" rel="noopener">Facebook</a>
+        <a href="mailto:artlenardbradecina@gmail.com">Email</a>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT & EDUCATION ========== -->
+    <section id="about">
+      <h2>About and education</h2>
+      <div class="grid two">
+        <div class="panel">
+          <p class="lead">I'm a Computer Engineering student at ICCT Colleges Foundation Inc. in Cainta, Rizal. My focus is embedded systems, microcontrollers like the ESP32 and Arduino, IoT sensors, and hardware-software co-design.</p>
+          <p>My recent work includes an assistive communication system for aphasia patients and a solar-powered irrigation prototype for eggplant farming.</p>
+        </div>
+        <div class="panel">
+          <ul class="edu">
+            <li><span class="mono">In progress</span><strong>B.S. Computer Engineering</strong>ICCT Colleges Foundation Inc., Cainta, Rizal</li>
+            <li><span class="mono">Focus areas</span><strong>Embedded and IoT</strong>
+              <span class="tag">Embedded systems</span><span class="tag">Microcontrollers</span><span class="tag">IoT sensors</span><span class="tag">HW/SW co-design</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SKILLS ========== -->
+    <section id="skills">
+      <h2>Technical skills</h2>
+      <div class="grid three">
+        <div class="panel skill-card"><h3>Embedded Systems</h3>
+          <span class="tag">C / C++</span><span class="tag">Arduino Framework</span><span class="tag">ESP32-S3</span><span class="tag">ESP32-C6</span><span class="tag">HC-12 Wireless</span><span class="tag">UART</span><span class="tag">SPI</span><span class="tag">I2C</span></div>
+        <div class="panel skill-card"><h3>Hardware and IoT</h3>
+          <span class="tag">MPPT Solar Controllers</span><span class="tag">MOSFET Switching</span><span class="tag">DS18B20</span><span class="tag">DHT22</span><span class="tag">YF-S201 Flow Sensors</span><span class="tag">ST7735S TFT</span><span class="tag">DFPlayer Mini</span></div>
+        <div class="panel skill-card"><h3>Design and Prototyping</h3>
+          <span class="tag">Circuit Schematics</span><span class="tag">Subsurface Drip Irrigation</span><span class="tag">Assistive Wearable Hardware</span></div>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS (filter via data-cat) ========== -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="row filters" role="group" aria-label="Filter projects">
+        <button class="btn sm mono active" data-filter="all">All</button>
+        <button class="btn sm mono" data-filter="embedded">Embedded / AAC</button>
+        <button class="btn sm mono" data-filter="iot">IoT &amp; Solar</button>
+      </div>
+      <div class="grid two" id="projectGrid">
+        <article class="panel card" data-cat="embedded"><h3>NeuroComm Board &amp; Smart Necklace</h3>
+          <p>An Augmentative and Alternative Communication (AAC) system for aphasia patients. A wearable alert receiver (vibration, buzzer, LED) pairs with long-range wireless communication and localized audio prompts.</p>
+          <span class="tag">C++</span><span class="tag">ESP32-C6</span><span class="tag">Arduino Uno</span><span class="tag">HC-12 Wireless</span><span class="tag">DFPlayer Mini</span></article>
+        <article class="panel card" data-cat="iot"><h3>Automated Solar Subsurface Irrigation System</h3>
+          <p>A solar-powered subsurface drip irrigation prototype for eggplant farming. It has dual-quadrant solenoid controls, environmental sensor monitoring, MPPT charging management and flow anomaly detection.</p>
+          <span class="tag">ESP32-S3</span><span class="tag">12V LiFePO4 / Solar MPPT</span><span class="tag">DS18B20 / DHT22</span><span class="tag">ST7735S TFT</span><span class="tag">YF-S201</span><span class="tag">Solenoid Valves</span></article>
+      </div>
+    </section>
+
+    <!-- ========== RESEARCH & EXPERIENCE ========== -->
+    <section id="experience">
+      <h2>Research and experience</h2>
+      <ol class="timeline">
+        <li><span class="mono">2026</span><h3>Lead Hardware &amp; Systems Researcher</h3>
+          <p><strong>Subsurface Solar Irrigation Project, ICCT Colleges.</strong> Designed power management schematics, solar MPPT battery regulation, sensor array integration and MOSFET-driven valve switching.</p></li>
+        <li><span class="mono">2025</span><h3>Embedded Systems Developer</h3>
+          <p><strong>NeuroComm AAC Wearable Project.</strong> Developed low-latency C++ firmware for ESP32 microcontrollers and HC-12 wireless alert broadcasting.</p></li>
+      </ol>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact">
+      <div class="panel cta">
+        <h2>Let's build something</h2>
+        <p>Have a hardware idea, a research project or a role to fill? Send me a message.</p>
+        <a class="btn primary" href="mailto:artlenardbradecina@gmail.com">artlenardbradecina@gmail.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mono">© 2026 Art Lenard B. Bradecina</footer>
+
+  <!-- ========== CLI TERMINAL MODAL ========== -->
+  <div class="modal" id="cli" role="dialog" aria-modal="true" aria-label="Terminal">
+    <div class="term mono">
+      <div class="term-bar"><span>art@portfolio:~</span><button class="btn sm" data-close="cli" aria-label="Close terminal">✕</button></div>
+      <div id="termOut" aria-live="polite"></div>
+      <label class="term-line"><span>$</span><input id="termIn" autocomplete="off" spellcheck="false" aria-label="Command"></label>
+    </div>
+  </div>
+
+  <!-- ========== RESUME MODAL (print-ready) ========== -->
+  <div class="modal" id="cvModal" role="dialog" aria-modal="true" aria-label="Resume">
+    <div class="sheet">
+      <div class="row no-print">
+        <button class="btn primary sm" id="printBtn">Print or save as PDF</button>
+        <button class="btn sm" data-close="cvModal">Close</button>
+      </div>
+      <h1>Art Lenard B. Bradecina</h1>
+      <p>Computer Engineering Student &amp; Embedded Systems Developer<br>Teresa, Rizal, Philippines · artlenardbradecina@gmail.com<br>github.com/artlenardbradecina</p>
+      <h2>Summary</h2>
+      <p>Computer Engineering student focused on embedded systems, microcontrollers (ESP32, Arduino), IoT sensors and hardware-software co-design.</p>
+      <h2>Education</h2>
+      <p><strong>B.S. Computer Engineering</strong>, ICCT Colleges Foundation Inc., Cainta, Rizal (in progress)</p>
+      <h2>Experience</h2>
+      <p><strong>Lead Hardware &amp; Systems Researcher</strong>, Subsurface Solar Irrigation Project, ICCT Colleges (2026). Designed power management schematics, solar MPPT battery regulation, sensor array integration and MOSFET-driven valve switching.</p>
+      <p><strong>Embedded Systems Developer</strong>, NeuroComm AAC Wearable Project (2025). Developed low-latency C++ firmware for ESP32 microcontrollers and HC-12 wireless alert broadcasting.</p>
+      <h2>Projects</h2>
+      <p><strong>NeuroComm Board &amp; Smart Necklace.</strong> AAC system for aphasia patients with a wearable alert receiver, long-range wireless and local audio prompts. C++, ESP32-C6, Arduino Uno, HC-12, DFPlayer Mini.</p>
+      <p><strong>Automated Solar Subsurface Irrigation System.</strong> Solar-powered drip irrigation prototype for eggplant farming with MPPT charging, sensor monitoring and flow anomaly detection. ESP32-S3, LiFePO4, DS18B20/DHT22, ST7735S, YF-S201.</p>
+      <h2>Skills</h2>
+      <p><strong>Embedded:</strong> C/C++, Arduino Framework, ESP32-S3/C6, HC-12, UART/SPI/I2C<br>
+         <strong>Hardware and IoT:</strong> MPPT solar controllers, MOSFET switching, DS18B20, DHT22, YF-S201, ST7735S, DFPlayer Mini<br>
+         <strong>Design:</strong> circuit schematics, subsurface drip irrigation, assistive wearable hardware</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
