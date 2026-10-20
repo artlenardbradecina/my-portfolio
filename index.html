@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Portfolio of Art Lenard B. Bradecina. Files: index.html, style.css, script.js, profile.jpg -->
+<!-- Portfolio of Art Lenard B. Bradecina. Files: index.html, style.css, script.js, profile.jpg, neurocomm.jpg, irrigation.jpg -->
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@
   <title>Art Lenard B. Bradecina | Embedded Systems Developer</title>
   <meta name="description" content="Computer Engineering student and embedded systems developer building IoT and assistive hardware.">
   <!-- Favicon: the <A/> monogram as an inline SVG -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0c10'/%3E%3Ctext x='32' y='41' font-family='monospace' font-size='24' font-weight='bold' fill='%2338bdf8' text-anchor='middle'%3E%26lt;A/%26gt;%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0c10'/%3E%3Ctext x='32' y='47' font-family='monospace' font-size='44' font-weight='bold' fill='%2338bdf8' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -25,6 +25,7 @@
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
+      <a href="#music">Music</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="tools">
@@ -38,6 +39,7 @@
   <main>
     <!-- ========== HERO ========== -->
     <section id="home" class="hero">
+      <canvas id="headerCanvas" aria-hidden="true"></canvas>
       <div class="avatar" role="img" aria-label="Portrait of Art Lenard"></div>
       <p class="mono tagline">Teresa, Rizal, Philippines</p>
       <h1>Art Lenard B. Bradecina</h1>
@@ -94,10 +96,10 @@
         <button class="btn sm mono" data-filter="iot">IoT &amp; Solar</button>
       </div>
       <div class="grid two" id="projectGrid">
-        <article class="panel card" data-cat="embedded"><h3>NeuroComm Board &amp; Smart Necklace</h3>
+        <article class="panel card" data-cat="embedded"><img class="thumb" src="neurocomm.jpg" alt="NeuroComm board with an LCD and eight colored buttons, next to the necklace receiver" loading="lazy" decoding="async"><h3>NeuroComm Board &amp; Smart Necklace</h3>
           <p>An Augmentative and Alternative Communication (AAC) system for aphasia patients. A wearable alert receiver (vibration, buzzer, LED) pairs with long-range wireless communication and localized audio prompts.</p>
           <span class="tag">C++</span><span class="tag">ESP32-C6</span><span class="tag">Arduino Uno</span><span class="tag">HC-12 Wireless</span><span class="tag">DFPlayer Mini</span></article>
-        <article class="panel card" data-cat="iot"><h3>Automated Solar Subsurface Irrigation System</h3>
+        <article class="panel card" data-cat="iot"><img class="thumb" src="irrigation.jpg" alt="Cutaway diagram of the solar panel, control box, pump and buried drip line feeding an eggplant bed" loading="lazy" decoding="async"><h3>Automated Solar Subsurface Irrigation System</h3>
           <p>A solar-powered subsurface drip irrigation prototype for eggplant farming. It has dual-quadrant solenoid controls, environmental sensor monitoring, MPPT charging management and flow anomaly detection.</p>
           <span class="tag">ESP32-S3</span><span class="tag">12V LiFePO4 / Solar MPPT</span><span class="tag">DS18B20 / DHT22</span><span class="tag">ST7735S TFT</span><span class="tag">YF-S201</span><span class="tag">Solenoid Valves</span></article>
       </div>
@@ -112,6 +114,20 @@
         <li><span class="mono">2025</span><h3>Embedded Systems Developer</h3>
           <p><strong>NeuroComm AAC Wearable Project.</strong> Developed low-latency C++ firmware for ESP32 microcontrollers and HC-12 wireless alert broadcasting.</p></li>
       </ol>
+    </section>
+
+    <!-- ========== FAVORITE MUSIC (Spotify embed) ========== -->
+    <section id="music">
+      <h2>Favorite music</h2>
+      <div class="panel music">
+        <span class="badge">CURRENTLY ON REPEAT // AUDIO STREAM</span>
+        <div>
+          <h3>Let Me Love You</h3>
+          <p>Mario</p>
+        </div>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7GaFYUqP2WdR4KTPk7cXoP?utm_source=generator&amp;theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Let Me Love You by Mario on Spotify"></iframe>
+        <a class="mono" href="https://open.spotify.com/track/7GaFYUqP2WdR4KTPk7cXoP" target="_blank" rel="noopener">Open in Spotify</a>
+      </div>
     </section>
 
     <!-- ========== CONTACT ========== -->
