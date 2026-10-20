@@ -13,7 +13,7 @@
 /* ===== 2. BASE ===== */
 * { box-sizing: border-box; margin: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-body { background: var(--bg); color: var(--text); font: 400 1rem/1.7 var(--sans); }
+body { background: var(--bg); color: var(--text); font: 400 1rem/1.7 var(--sans); overflow-x: clip; }
 .mono { font-family: var(--mono); }
 h1, h2, h3 { color: var(--head); line-height: 1.2; }
 h1 { font-size: clamp(2rem, 6vw, 3.6rem); font-weight: 800; letter-spacing: -0.02em; }
@@ -57,7 +57,16 @@ footer { text-align: center; padding: 3rem 1rem; font-size: .8rem; }
 }
 
 /* ===== 5. LAYOUT BLOCKS ===== */
-.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; }
+.hero { position: relative; isolation: isolate; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; }
+/* PCB header canvas: full-bleed behind the hero text, eased out at the left and bottom edges */
+#headerCanvas {
+  position: absolute; top: 0; left: 50%; z-index: -1; width: 100vw; height: 100%;
+  transform: translateX(-50%); pointer-events: none;
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  -webkit-mask-image: linear-gradient(#000 80%, transparent), linear-gradient(90deg, rgba(0,0,0,.3), #000 65%);
+  mask-image: linear-gradient(#000 80%, transparent), linear-gradient(90deg, rgba(0,0,0,.3), #000 65%);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+}
 .tagline { color: var(--accent); font-size: .85rem; }
 .role { color: var(--head); font-size: .95rem; }
 /* Profile photo: cropped around the head via background positioning (swap profile.jpg to change) */
@@ -85,6 +94,20 @@ footer { text-align: center; padding: 3rem 1rem; font-size: .8rem; }
 .edu { list-style: none; padding: 0; display: grid; gap: 1.2rem; }
 .edu span { display: block; color: var(--accent); font-size: .8rem; }
 .edu strong { display: block; color: var(--head); }
+
+/* Project thumbnails and music card */
+.thumb { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; margin-bottom: 1rem; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+.music { display: grid; gap: 1rem; border-color: var(--accent);
+  box-shadow: 0 0 28px color-mix(in srgb, var(--accent) 30%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--accent) 25%, transparent); }
+.music p { margin: 0; }
+.music iframe { display: block; border: 0; }
+.badge {
+  display: inline-flex; align-items: center; gap: .5rem; width: fit-content; padding: .15rem .6rem;
+  font: .72rem var(--mono); letter-spacing: .08em; color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); border-radius: 4px;
+}
+.badge::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: blink 1.6s ease-in-out infinite; }
+@keyframes blink { 50% { opacity: .25; } }
 
 /* Timeline */
 .timeline { list-style: none; padding: 0 0 0 1.5rem; border-left: 2px solid var(--line); display: grid; gap: 2rem; }
@@ -154,5 +177,5 @@ footer { text-align: center; padding: 3rem 1rem; font-size: .8rem; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  * { transition: none !important; }
+  * { transition: none !important; animation: none !important; }
 }
